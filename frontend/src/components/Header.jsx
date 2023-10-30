@@ -31,7 +31,7 @@ const Header = () => {
 							</LinkContainer>
 
 							<LinkContainer to="/login">
-								<Nav.Link href="/login">
+								<Nav.Link>
 									<FaUser />
 									Sign In
 								</Nav.Link>
