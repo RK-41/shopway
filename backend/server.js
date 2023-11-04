@@ -25,6 +25,7 @@ const port = process.env.PORT || 5000;
 // Connecting to MongoDB
 connectDB();
 
+// Creating an Express App
 const app = express();
 
 app.get('/', (req, res) => {
