@@ -2,6 +2,9 @@
   29.10.23
 
   Index: Entry Point of React
+
+  08.11
+  Cart Route Implementation
 */
 
 /* eslint-disable no-unused-vars */

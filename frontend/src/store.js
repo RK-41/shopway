@@ -4,7 +4,7 @@
   Store: Entry Point of Redux
 
   08.11.
-  Cart Slice Addition
+  Cart Slice Reducer
 */
 
 import { configureStore } from '@reduxjs/toolkit';

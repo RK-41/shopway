@@ -3,6 +3,9 @@
   08.11.
 
   Cart Screen
+  
+  Add to Cart
+  Remove from Cart
 */
 
 import { Link, useNavigate } from 'react-router-dom';

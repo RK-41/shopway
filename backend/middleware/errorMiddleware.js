@@ -15,7 +15,7 @@ const notFound = (req, res, next) => {
 
 // Overriding the Default Express Error Handler
 const errorHandler = (err, req, res, next) => {
-	let statusCode = res.statusCode === 200 ? 500 : req.statusCode;
+	let statusCode = res.statusCode === 200 ? 500 : res.statusCode;
 	let message = err.message;
 
 	// Check for Mongoose Bad ObjectId

@@ -23,7 +23,7 @@ const Header = () => {
 					<LinkContainer to='/'>
 						<Navbar.Brand>
 							<img src={logo} alt='Shopway' />
-							Shopway
+							ShopWay
 						</Navbar.Brand>
 					</LinkContainer>
 

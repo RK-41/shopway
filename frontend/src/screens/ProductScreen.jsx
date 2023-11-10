@@ -44,8 +44,6 @@ const ProductScreen = () => {
 		error,
 	} = useGetProductDetailsQuery(productId);
 
-	// console.log([...Array(product.countInStock).keys()]);
-
 	const addToCartHandler = () => {
 		dispatch(addToCart({ ...product, qty }));
 		navigate('/cart');
@@ -107,6 +105,7 @@ const ProductScreen = () => {
 									</Row>
 								</ListGroup.Item>
 
+								{/* ADD TO CART */}
 								{product.countInStock > 0 && (
 									<ListGroup.Item>
 										<Row>

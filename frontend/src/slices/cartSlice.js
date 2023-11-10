@@ -7,7 +7,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { updateCart } from '../utils/cartUtils';
 
-// Fetching Initial State
+// Fetching Initial State from Local Storage
 const initialState = localStorage.getItem('cart')
 	? JSON.parse(localStorage.getItem('cart'))
 	: { cartItems: [] };
@@ -41,7 +41,7 @@ const cartSlice = createSlice({
 	},
 });
 
-// Exporting 'addtoCart' Action
+// Exporting 'addtoCart' and 'removeFromCart Action
 export const { addToCart, removeFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
