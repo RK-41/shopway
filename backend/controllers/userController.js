@@ -7,6 +7,8 @@
    User Auth Setup
    User Logout Setup
    User Registration Setup
+   Get User Profile Setup
+   Update User Profile Setup
 
 */
 
@@ -36,7 +38,6 @@ const authUser = asyncHandler(async (req, res) => {
 		res.status(401); // 401: Unauthorized
 		throw new Error(`Invalid email or password`);
 	}
-	// res.send('failed');
 });
 
 // @desc    Register User

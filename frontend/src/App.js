@@ -1,27 +1,35 @@
 /**
 29.10.23
 
+   Main App Component
+
+   11.11.
+      React Toastify Implementation
  */
 
 import { Container } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
 const App = () => {
-   return (
-      <>
-         <Header />
+	return (
+		<>
+			<Header />
 
-         <main className='py-3'>
-            <Container>
-               <Outlet />
-            </Container>
-         </main>
+			<main className='py-3'>
+				<Container>
+					<Outlet />
+				</Container>
+			</main>
 
-         <Footer />
-      </>
-   )
-}
+			<Footer />
 
-export default App
+			<ToastContainer />
+		</>
+	);
+};
+
+export default App;

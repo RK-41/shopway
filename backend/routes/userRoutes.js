@@ -23,7 +23,7 @@ import { protect, admin } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-// All are connected to '/api/users'
+// All routes are connected to '/api/users'
 router.route('/').post(registerUser).get(protect, admin, getUsers);
 router.post('/logout', logoutUser);
 router.post('/auth', authUser);

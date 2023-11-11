@@ -21,11 +21,13 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
-dotenv.config(); // Call it before using any env variables
 import connectDB from './config/db.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+
+// 'dotenv.config()' should be called before using any env variables
+dotenv.config();
 
 const port = process.env.PORT || 5000;
 
