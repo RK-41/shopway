@@ -4,14 +4,19 @@
   Index: Entry Point of React
 
   08.11
-   Cart Route Implementation
+   Cart Route Setup
 
   11.11.
-   Login Route Implementation
-   Register Route Implementation
+   Login Route Setup
+   Register Route Setup
 
   12.11.
-   Shipping Route Implementation as Private Route
+   Shipping Route Setup as Private Route
+
+  13.11.
+   Payment Route Setup as Private Route
+   Place Order Route Setup as Private Route
+   Order Route Setup as Private Route
 */
 
 /* eslint-disable no-unused-vars */
