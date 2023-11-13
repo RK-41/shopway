@@ -6,6 +6,9 @@
   12.11.23
    Save Shipping Address Reducer
    Save Payment Method Reducer
+
+  13.11.
+   Clear Cart Items Reducer
 */
 
 import { createSlice } from '@reduxjs/toolkit';
@@ -52,6 +55,11 @@ const cartSlice = createSlice({
 			state.paymentMethod = action.payload;
 			return updateCart(state);
 		},
+
+		clearCartItems: (state, action) => {
+			state.cartItems = [];
+			return updateCart(state);
+		},
 	},
 });
 
@@ -61,6 +69,7 @@ export const {
 	removeFromCart,
 	saveShippingAddress,
 	savePaymentMethod,
+	clearCartItems,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

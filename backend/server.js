@@ -6,16 +6,20 @@
    Using ES Modules rather than JS Modules
 
    03.11.
-      Implementing Product Routes
+      Implemented Product Route
 
    04.11.
-      Implementing Error Handler Middleware
+      Implemented Error Handler Middleware
 
    09.11.
       Body Parser Middleware
 
    10.11.
       Cookie Parse Middleware
+
+   13.11.
+      Implemented Order Route
+      Implemented PayPal Route
  */
 
 import express from 'express';
@@ -25,6 +29,7 @@ import connectDB from './config/db.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 
 // 'dotenv.config()' should be called before using any env variables
 dotenv.config();
@@ -48,9 +53,15 @@ app.get('/', (req, res) => {
 	res.send('API is RUNNING...');
 });
 
-// Linking '/api/products' to 'productsRoutes' and 'userRoutes'
+// Linking respective routes to 'productsRoutes', 'userRoutes' and 'orderRoutes'
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/orders', orderRoutes);
+
+// PayPal Route
+app.get('/api/config/paypal', (req, res) =>
+	res.send({ clientId: process.env.PAYPAL_CLIENT_ID })
+);
 
 // Using Error Handler Middleware
 app.use(notFound);
