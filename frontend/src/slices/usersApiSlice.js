@@ -3,6 +3,10 @@
 
   Users API Slice
    For the server.
+
+  14.11.
+   Profile Mutation
+   
 */
 
 import { USERS_URL } from '../constants';
@@ -32,8 +36,20 @@ export const usersApiSlice = apiSlice.injectEndpoints({
 				method: 'POST',
 			}),
 		}),
+
+		profile: builder.mutation({
+			query: (data) => ({
+				url: `${USERS_URL}/profile`,
+				method: 'PUT',
+				body: data,
+			}),
+		}),
 	}),
 });
 
-export const { useLoginMutation, useRegisterMutation, useLogoutMutation } =
-	usersApiSlice;
+export const {
+	useLoginMutation,
+	useRegisterMutation,
+	useLogoutMutation,
+	useProfileMutation,
+} = usersApiSlice;
