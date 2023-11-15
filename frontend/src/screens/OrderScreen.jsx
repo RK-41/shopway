@@ -6,19 +6,15 @@
 
   14.11.
    PayPal Payment Method Setup
+
+  15.11.
+   Deliver Order Functionality for the Admin
+      'Mark as Delivered' Button Added
 */
 
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import {
-	Row,
-	Col,
-	ListGroup,
-	Image,
-	Form,
-	Button,
-	Card,
-} from 'react-bootstrap';
+import { Row, Col, ListGroup, Image, Button, Card } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
@@ -28,6 +24,7 @@ import {
 	useGetOrderDetailsQuery,
 	usePayOrderMutation,
 	useGetPayPalClientIdQuery,
+	useDelivereOrderMutation,
 } from '../slices/ordersApiSlice';
 import { ORDERS_URL } from '../constants';
 
@@ -42,6 +39,9 @@ const OrderScreen = () => {
 	} = useGetOrderDetailsQuery(orderId);
 
 	const [payOrder, { isLoading: loadingPayOrder }] = usePayOrderMutation();
+
+	const [delivereOrder, { isLoading: loadingDeliver }] =
+		useDelivereOrderMutation();
 
 	const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 
@@ -116,6 +116,16 @@ const OrderScreen = () => {
 			});
 	}
 
+	const deliverOrderHandler = async () => {
+		try {
+			await delivereOrder(orderId);
+			refetch();
+			toast.success('Order Delivered');
+		} catch (error) {
+			toast.error(error?.data?.message || error.message);
+		}
+	};
+
 	console.log(order);
 
 	return isLoading ? (
@@ -145,7 +155,7 @@ const OrderScreen = () => {
 							</p>
 
 							{order.isDelivered ? (
-								<Message variant='succes'>
+								<Message variant='success'>
 									Delivered on {order.deliveredAt}
 								</Message>
 							) : (
@@ -219,8 +229,6 @@ const OrderScreen = () => {
 								</Row>
 							</ListGroup.Item>
 
-							{/* PAY ODER PLACEHOLDER */}
-
 							{!order.isPaid && (
 								<ListGroup.Item>
 									{loadingPayPal && <Loader />}
@@ -229,6 +237,7 @@ const OrderScreen = () => {
 										<Loader />
 									) : (
 										<div>
+											{/* FOR DEVELOPMENT MODE */}
 											{/* <Button
 												onClick={onApproveTest}
 												style={{ marginBottom: '10px' }}
@@ -247,7 +256,23 @@ const OrderScreen = () => {
 									)}
 								</ListGroup.Item>
 							)}
-							{/* MARK AS DELIVERED PLACEHOLDER */}
+
+							{loadingDeliver && <Loader />}
+
+							{userInfo &&
+								userInfo.isAdmin &&
+								order.isPaid &&
+								!order.isDelivered && (
+									<ListGroup.Item>
+										<Button
+											type='button'
+											className='btn btn-block'
+											onClick={deliverOrderHandler}
+										>
+											Mark as Delivered
+										</Button>
+									</ListGroup.Item>
+								)}
 						</ListGroup>
 					</Card>
 				</Col>

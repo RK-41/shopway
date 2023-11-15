@@ -21,6 +21,11 @@
   14.11.23.
    PayPalScriptProvider Setup
    Profile Route Setup as Private Route
+
+  15.11.
+   Admin Route Setup
+   Order List Route Setup as Admin Route
+   Product List Route Setup as Admin Route
 */
 
 /* eslint-disable no-unused-vars */
@@ -42,6 +47,7 @@ import './assets/styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import PrivateRoute from './components/PrivateRoute';
+import AdminRoute from './components/AdminRoute';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
@@ -52,6 +58,9 @@ import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import OrderListScreen from './screens/admin/OrderListScreen';
+import ProductListScreen from './screens/admin/ProductListScreen';
+import ProductEditScreen from './screens/admin/ProductEditScreen';
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -68,6 +77,12 @@ const router = createBrowserRouter(
 				<Route path='/placeorder' element={<PlaceOrderScreen />} />
 				<Route path='/order/:id' element={<OrderScreen />} />
 				<Route path='/profile' element={<ProfileScreen />} />
+			</Route>
+
+			<Route path='' element={<AdminRoute />}>
+				<Route path='/admin/orderlist' element={<OrderListScreen />} />
+				<Route path='/admin/productlist' element={<ProductListScreen />} />
+				<Route path='/admin/product/:id/edit' element={<ProductEditScreen />} />
 			</Route>
 		</Route>
 	)

@@ -8,6 +8,11 @@
       payOrder
       getPayPalClientId
       getMyOrders
+
+  15.11.
+   Endoints Added (Support for Admin Functionality):
+      getOrders
+      deliverOrder
 */
 
 import { apiSlice } from './apiSlice';
@@ -51,6 +56,20 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
 			}),
 			keepUnusedDataFor: 5,
 		}),
+
+		getOrders: builder.query({
+			query: () => ({
+				url: ORDERS_URL,
+			}),
+			keepUnusedDataFor: 5,
+		}),
+
+		delivereOrder: builder.mutation({
+			query: (orderId) => ({
+				url: `${ORDERS_URL}/${orderId}/deliver`,
+				method: 'PUT',
+			}),
+		}),
 	}),
 });
 
@@ -60,4 +79,6 @@ export const {
 	usePayOrderMutation,
 	useGetPayPalClientIdQuery,
 	useGetMyOrdersQuery,
+	useGetOrdersQuery,
+	useDelivereOrderMutation,
 } = ordersApiSlice;
