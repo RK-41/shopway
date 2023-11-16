@@ -2,6 +2,9 @@
   15.11.
 
   Product List Screen
+
+  16.11.
+   Implemented Delete Product Functionality
 */
 
 import { LinkContainer } from 'react-router-bootstrap';
@@ -12,6 +15,7 @@ import Message from '../../components/Message';
 import {
 	useGetProductsQuery,
 	useCreateProductMutation,
+	useDeleteProductMutation,
 } from '../../slices/productsApiSlice';
 import { toast } from 'react-toastify';
 
@@ -21,20 +25,33 @@ const ProductListScreen = () => {
 	const [createProduct, { isLoading: loadingCreateProduct }] =
 		useCreateProductMutation();
 
-	const deleteHandler = async (productId) => {
-		console.log('delete product:', productId);
-	};
+	const [deleteProduct, { isLoading: loadingDeleteProduct }] =
+		useDeleteProductMutation();
 
 	const createProductHandler = async () => {
 		if (window.confirm('Are you sure you want to create a new product?')) {
 			try {
 				await createProduct();
+				toast.success('Product Created Successfully');
 				refetch();
 			} catch (error) {
 				toast.error(error?.data?.message || error.message);
 			}
 		}
 	};
+
+	const deleteHandler = async (productId) => {
+		if (window.confirm('Are you sure you want to delete this product?')) {
+			try {
+				await deleteProduct(productId);
+				toast.success('Product Deleted Successfully');
+				refetch();
+			} catch (error) {
+				toast.error(error?.data?.message || error.error);
+			}
+		}
+	};
+
 	return (
 		<>
 			<Row className='align-items-center'>
@@ -48,8 +65,6 @@ const ProductListScreen = () => {
 					</Button>
 				</Col>
 			</Row>
-
-			{loadingCreateProduct && <Loader />}
 
 			{isLoading ? (
 				<Loader />
@@ -96,6 +111,9 @@ const ProductListScreen = () => {
 					</Table>
 				</>
 			)}
+
+			{loadingCreateProduct && <Loader />}
+			{loadingDeleteProduct && <Loader />}
 		</>
 	);
 };

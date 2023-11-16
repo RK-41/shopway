@@ -2,6 +2,9 @@
   15.11.
 
   Product Edit Screen
+
+  16.11.
+   Implemented Product Image Upload Functionality
 */
 
 import { useState, useEffect } from 'react';
@@ -14,6 +17,7 @@ import { toast } from 'react-toastify';
 import {
 	useUpdateProductMutation,
 	useGetProductDetailsQuery,
+	useUploadProductImageMutation,
 } from '../../slices/productsApiSlice';
 
 const ProductEditScreen = () => {
@@ -36,6 +40,9 @@ const ProductEditScreen = () => {
 
 	const [updateProduct, { isLoading: loadingUpdateProduct }] =
 		useUpdateProductMutation();
+
+	const [uploadProductImage, { isLoading: loadingUploadProductImage }] =
+		useUploadProductImageMutation();
 
 	const navigate = useNavigate();
 
@@ -70,10 +77,24 @@ const ProductEditScreen = () => {
 		if (result.error) {
 			toast.error(result.error);
 		} else {
-			toast.success('Product Updated');
+			toast.success('Product Updated Successfully');
 			navigate('/admin/productList');
 			refetch();
 		}
+	};
+
+	const uploadFileHandler = async (e) => {
+		const formData = new FormData();
+		formData.append('image', e.target.files[0]);
+
+		try {
+			const res = await uploadProductImage(formData).unwrap();
+			toast.success(res.message);
+			setImage(res.image);
+		} catch (error) {
+			toast.error(error?.data?.message || error.error);
+		}
+		console.log(e.target.files[0]);
 	};
 
 	return (
@@ -85,16 +106,12 @@ const ProductEditScreen = () => {
 			<FormContainer>
 				<h1>Edit Product</h1>
 
-				{loadingUpdateProduct && <Loader />}
-
 				{isLoading ? (
 					<Loader />
 				) : error ? (
 					<Message variant='danger'>{error}</Message>
 				) : (
 					<Form onSubmit={submitHandler}>
-						{/* IMAGE INPUT PLACEHOLDER */}
-
 						<Form.Group controlId='name' className='my-2'>
 							<Form.Label>Name</Form.Label>
 							<Form.Control
@@ -155,12 +172,30 @@ const ProductEditScreen = () => {
 							></Form.Control>
 						</Form.Group>
 
+						<Form.Group controlId='image' className='my-2'>
+							<Form.Label>Image</Form.Label>
+							<Form.Control
+								type='text'
+								placeholder='Enter image url'
+								value={image}
+								onChange={(e) => setImage()}
+							></Form.Control>
+
+							<Form.Control
+								type='file'
+								label='Choose file'
+								onChange={uploadFileHandler}
+							></Form.Control>
+						</Form.Group>
+
 						<Button type='submit' variant='primary' className='my-2'>
 							Update
 						</Button>
 					</Form>
 				)}
 			</FormContainer>
+
+			{loadingUpdateProduct && <Loader />}
 		</>
 	);
 };

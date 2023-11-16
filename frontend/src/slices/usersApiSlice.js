@@ -5,8 +5,15 @@
    For the server.
 
   14.11.
-   Profile Mutation
+   Endpoint Added for Profile Update:
+      profile
    
+  16.11.
+   Endpoints Added:
+      getUsers
+      deleteUsers
+      getUserDetails
+      updateUser
 */
 
 import { USERS_URL } from '../constants';
@@ -44,6 +51,38 @@ export const usersApiSlice = apiSlice.injectEndpoints({
 				body: data,
 			}),
 		}),
+
+		getUsers: builder.query({
+			query: () => ({
+				url: USERS_URL,
+			}),
+			providesTags: ['Users'],
+			keepUnusedDataFor: 5,
+		}),
+
+		deleteUser: builder.mutation({
+			query: (userId) => ({
+				url: `${USERS_URL}/${userId}`,
+				method: 'DELETE',
+			}),
+			invalidatesTags: ['Users'],
+		}),
+
+		getUserDetails: builder.query({
+			query: (userId) => ({
+				url: `${USERS_URL}/${userId}`,
+			}),
+			keepUnusedDataFor: 5,
+		}),
+
+		updateUser: builder.mutation({
+			query: (data) => ({
+				url: `${USERS_URL}/${data.userId}`,
+				method: 'PUT',
+				body: data,
+			}),
+			invalidatesTags: ['Users'],
+		}),
 	}),
 });
 
@@ -52,4 +91,8 @@ export const {
 	useRegisterMutation,
 	useLogoutMutation,
 	useProfileMutation,
+	useGetUsersQuery,
+	useDeleteUserMutation,
+	useGetUserDetailsQuery,
+	useUpdateUserMutation,
 } = usersApiSlice;
