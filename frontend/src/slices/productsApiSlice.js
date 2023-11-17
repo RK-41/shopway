@@ -13,6 +13,13 @@
    Endpoints Added:
       uploadProductImage
       deleteProduct
+
+  17.11.
+   Endpoint Added:
+      createProductReview
+
+   Endpoint Modified:
+      getProducts: Pagination and Search Functionalities Implementation
 */
 
 import { PRODUCTS_URL, UPLOAD_URL } from '../constants';
@@ -21,8 +28,12 @@ import { apiSlice } from './apiSlice';
 export const productsApiSlice = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		getProducts: builder.query({
-			query: () => ({
+			query: ({ keyword, pageNumber }) => ({
 				url: PRODUCTS_URL,
+				params: {
+					keyword,
+					pageNumber,
+				},
 			}),
 			keepUnusedDataFor: 5,
 			providesTags: ['Products'],
@@ -66,6 +77,15 @@ export const productsApiSlice = apiSlice.injectEndpoints({
 				method: 'DELETE',
 			}),
 		}),
+
+		createProductReview: builder.mutation({
+			query: (data) => ({
+				url: `${PRODUCTS_URL}/${data.productId}`,
+				method: 'POST',
+				body: data,
+			}),
+			invalidatesTags: ['Products'],
+		}),
 	}),
 });
 
@@ -76,6 +96,7 @@ export const {
 	useUpdateProductMutation,
 	useUploadProductImageMutation,
 	useDeleteProductMutation,
+	useCreateProductReviewMutation,
 } = productsApiSlice;
 /*
   By convention, 'getProducts' query is exported as 'useGetProductsQuery' prefixed with 'use' and suffixed with 'Query'
