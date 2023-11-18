@@ -4,8 +4,11 @@
    To Connect to the MongoDB DataBase using Mongoose
  */
 
+import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import colors from 'colors';
+
+dotenv.config();
 
 // Function to Connect DB
 const connectDB = async () => {
