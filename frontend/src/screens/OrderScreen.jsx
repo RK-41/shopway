@@ -25,7 +25,7 @@ import {
 	useGetPayPalClientIdQuery,
 	useDelivereOrderMutation,
 } from '../slices/ordersApiSlice';
-import { ORDERS_URL } from '../constants';
+// import { ORDERS_URL } from '../constants';
 
 const OrderScreen = () => {
 	const { id: orderId } = useParams();
@@ -89,11 +89,11 @@ const OrderScreen = () => {
 		});
 	}
 
-	async function onApproveTest() {
-		await payOrder({ orderId, details: { payer: {} } });
-		refetch();
-		toast.success('Payment Sucessful');
-	}
+	// async function onApproveTest() {
+	// 	await payOrder({ orderId, details: { payer: {} } });
+	// 	refetch();
+	// 	toast.success('Payment Sucessful');
+	// }
 
 	function onError(error) {
 		toast.error(error.message);
@@ -251,6 +251,7 @@ const OrderScreen = () => {
 													onError={onError}
 												></PayPalButtons>
 											</div>
+											{loadingPayOrder && <Loader />}
 										</div>
 									)}
 								</ListGroup.Item>
