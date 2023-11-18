@@ -20,6 +20,10 @@
 
    Endpoint Modified:
       getProducts: Pagination and Search Functionalities Implementation
+
+  18.11.
+   Endpoint Added:
+      getTopProducts
 */
 
 import { PRODUCTS_URL, UPLOAD_URL } from '../constants';
@@ -86,6 +90,14 @@ export const productsApiSlice = apiSlice.injectEndpoints({
 			}),
 			invalidatesTags: ['Products'],
 		}),
+
+		getTopProducts: builder.query({
+			query: () => ({
+				url: `${PRODUCTS_URL}/top`,
+				method: 'GET',
+			}),
+			keepUnusedDataFor: 5,
+		}),
 	}),
 });
 
@@ -97,6 +109,7 @@ export const {
 	useUploadProductImageMutation,
 	useDeleteProductMutation,
 	useCreateProductReviewMutation,
+	useGetTopProductsQuery,
 } = productsApiSlice;
 /*
   By convention, 'getProducts' query is exported as 'useGetProductsQuery' prefixed with 'use' and suffixed with 'Query'

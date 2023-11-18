@@ -12,6 +12,10 @@
    17.11.
    Pagination Implementation
    Search Functionality Implementation
+
+   18.11.
+   Product Carousel Implementation
+   Meta Info Implementation using 'Meta' Component
  */
 
 import { Link, useParams } from 'react-router-dom';
@@ -20,6 +24,8 @@ import Product from '../components/Product';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Paginate from '../components/Paginate';
+import ProductCarousel from '../components/ProductCarousel';
+import Meta from '../components/Meta';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
 
 const HomeScreen = () => {
@@ -33,12 +39,15 @@ const HomeScreen = () => {
 
 	return (
 		<>
-			{/* GO BACK BUTTON TAKES TO HOME RATHER THAN TAKING TO THE PREVIOUS PAGE */}
-			{keyword && (
+			{/* ISSUE: GO BACK BUTTON TAKES TO HOME RATHER THAN TAKING TO THE PREVIOUS PAGE */}
+			{!keyword ? (
+				<ProductCarousel />
+			) : (
 				<Link to='/' className='btn btn-light my-3'>
 					Go Back
 				</Link>
 			)}
+
 			{isLoading ? (
 				<Loader />
 			) : error ? (
@@ -47,6 +56,7 @@ const HomeScreen = () => {
 				</Message>
 			) : (
 				<>
+					<Meta />
 					<h1>Latest Products</h1>
 
 					<Row>

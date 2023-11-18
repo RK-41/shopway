@@ -24,6 +24,9 @@
    16.11.
       Implemented Upload Routes
       Made the File Path '/uploads' Static
+
+   18.11.
+
  */
 
 import path from 'path';
@@ -55,10 +58,6 @@ app.use(express.urlencoded({ extended: true }));
 // Cookie Parser Middleware
 app.use(cookieParser());
 
-app.get('/', (req, res) => {
-	res.send('API is RUNNING...');
-});
-
 // Linking respective routes to 'productsRoutes', 'userRoutes', 'orderRoutes', 'uploadRoutes'
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
@@ -74,6 +73,21 @@ app.get('/api/config/paypal', (req, res) =>
 const __dirname = path.resolve();
 // Making the File Path '/uploads' Static
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+
+// Checking the Environment Mode
+if (process.env.NODE_ENV === 'production') {
+	// Setting Static Folder
+	app.use(express.static(path.join(__dirname, '/frontend/build')));
+
+	// Any Route that's not 'api' will be Redirected to 'index.html'
+	app.get('*', (req, res) =>
+		res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+	);
+} else {
+	app.get('/', (req, res) => {
+		res.send('API is RUNNING...');
+	});
+}
 
 // Using Error Handler Middleware
 app.use(notFound);

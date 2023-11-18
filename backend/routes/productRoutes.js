@@ -18,6 +18,10 @@
   17.11.
    Method Added:
       POST: createProductReview
+
+  18.11.
+   Method Added:
+      GET: getTopProducts
 */
 
 import express from 'express';
@@ -28,6 +32,7 @@ import {
 	updateProduct,
 	deleteProduct,
 	createProductReview,
+	getTopProducts,
 } from '../controllers/productController.js';
 import { protect, admin } from '../middleware/authMiddleware.js';
 
@@ -36,6 +41,7 @@ const router = express.Router();
 
 // Handling Routes and Requests
 router.route('/').get(getProducts).post(protect, admin, createProduct);
+router.route('/top').get(getTopProducts);
 router
 	.route('/:id')
 	.get(getProductById)

@@ -1,2 +1,6 @@
-React-Toastify
-Multer
+BACKEND
+Multer: multer
+
+FRONTEND
+React-Toastify: react-toastify
+React Helmet Async: react-helmet-async

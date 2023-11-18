@@ -13,6 +13,9 @@
    17.11.
    Product Review Implementation
 
+   18.11.
+   Meta Info Implementation for Specific Product Page
+
  */
 
 import { useState } from 'react';
@@ -35,6 +38,7 @@ import {
 	useCreateProductReviewMutation,
 } from '../slices/productsApiSlice';
 import Message from '../components/Message';
+import Meta from '../components/Meta';
 import { addToCart } from '../slices/cartSlice';
 
 const ProductScreen = () => {
@@ -98,6 +102,7 @@ const ProductScreen = () => {
 				</Message>
 			) : (
 				<>
+					<Meta title={product.name} />
 					<Row>
 						<Col md={5}>
 							<Image src={product.image} alt={product.name} fluid />
@@ -208,6 +213,7 @@ const ProductScreen = () => {
 												<Form.Control
 													as='select'
 													value={rating}
+													required
 													onChange={(e) => setRating(e.target.value)}
 												>
 													<option value=''>Select</option>

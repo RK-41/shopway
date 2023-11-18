@@ -195,6 +195,7 @@ const ProductEditScreen = () => {
 				)}
 			</FormContainer>
 
+			{loadingUploadProductImage && <Loader />}
 			{loadingUpdateProduct && <Loader />}
 		</>
 	);
