@@ -11,18 +11,15 @@
 		"dev": "concurrently \"npm run server\" \"npm run client\"",
 		"data:import": "node backend/seeder.js",
 		"data:destroy": "node backend/seeder.js -d",
-		"build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
-		"serve": "webpack serve"
+		"build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
 	},
 	"author": "RAJAN KUMAR",
 	"license": "ISC",
 	"devDependencies": {
+		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
 		"concurrently": "^8.2.2",
 		"dotenv": "^16.3.1",
-		"nodemon": "^3.0.1",
-		"webpack-cli": "^5.1.4",
-		"webpack-dev-server": "^4.15.1",
-		"@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+		"nodemon": "^3.0.1"
 	},
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
