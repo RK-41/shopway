@@ -22,7 +22,7 @@ It has a Working Shopping Cart with PayPal & Credit/Debit Payment Integration.
   
 - [Sample User Logins](#sample-user-logins)
   
-- [FAQ: How to use Vite instead of CRA?](#faq-how-tp-use-vite-instead-of-cra)
+- [FAQ: How to use Vite instead of CRA?](#faq-how-to-use-vite-instead-of-cra)
   - [Setting up the proxy](#setting-up-the-proxy)
   - [Setting up linting](#setting-up-linting)
   - [Vite outputs the build to /dist](#vite-outputs-the-build-to-dist)
