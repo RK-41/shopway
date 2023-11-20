@@ -16,7 +16,7 @@ It has a Working Shopping Cart with PayPal & Credit/Debit Payment Integration.
   - [Env Variables](#env-variables)
   - [Install Dependencies (frontend & backend)](#install-dependencies-frontend--backend)
   - [Run](#run)
-  - 
+    
 - [Build & Deploy](#build--deploy)
   - [Seed Database](#seed-database)
   
