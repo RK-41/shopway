@@ -91,6 +91,8 @@ npm run dev
 # Run backend only
 npm run server
 ```
+---
+
 
 ## Build & Deploy
 
@@ -248,7 +250,7 @@ module.exports = {
 };
 ```
 
-#### Vite outputs the build to /dist
+#### Vite outputs the build to '/dist'
 
 Create React App by default outputs the build to a **/build** directory and this is
 what served from the backend in production.  
@@ -307,8 +309,9 @@ start` as...
 ```
 
 #### Note:
-
+```
 Vite requires React component files to be named using the `.jsx` file
 type. 
 The entry point to the app will be in `main.jsx` instead of `index.js`
+```
 ---
