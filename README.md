@@ -113,6 +113,7 @@ npm run data:import
 # Destroy Data
 npm run data:destroy
 ```
+---
 
 
 ## Sample User Logins
@@ -309,9 +310,9 @@ start` as...
 ```
 
 #### Note:
-```
+
 Vite requires React component files to be named using the `.jsx` file
 type. 
 The entry point to the app will be in `main.jsx` instead of `index.js`
-```
+
 ---
