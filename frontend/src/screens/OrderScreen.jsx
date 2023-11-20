@@ -219,7 +219,7 @@ const OrderScreen = () => {
 
 								<Row>
 									<Col>Tax:</Col>
-									<Col>{order.taxPrice}</Col>
+									<Col>${order.taxPrice}</Col>
 								</Row>
 
 								<Row>
