@@ -34,7 +34,7 @@ It has a Working Shopping Cart with PayPal & Credit/Debit Payment Integration.
 
 ## Features
 
-- General Features -
+- General Features
   - Product Search Functionality
   - Top Products Carousel on Home Screen
   - Shopping Cart Functionalities - Add to Cart, Change Quantity, Delete From Cart
