@@ -130,35 +130,6 @@ tu2@email.com (Customer)
 ---
 
 
-## Handling Bad Responses in the Frontend
-
-There are a few cases in the frontend where if we get a bad response from the app's
-API then rendering the error object can be tried.
-This cannot be done in React. So, if you are seeing an error along the lines of
-**Objects are not valid as a React child** and the app breaks, then this
-could fix the app:
-
-#### Example from PlaceOrderScreen.jsx
-
-```jsx
-<ListGroup.Item>
-  {error && <Message variant='danger'>{error}</Message>}
-</ListGroup.Item>
-```
-
-The above code checks for an error that comes from the [useMutation](https://redux-toolkit.js.org/rtk-query/usage/mutations)
-hook. This will be an object though which cannot be rendered in React, so the message sent back from the app's API server is shown here...
-
-```jsx
-<ListGroup.Item>
-  {error && <Message variant='danger'>{error.data.message}</Message>}
-</ListGroup.Item>
-```
-
-The same is true for [handling errors from our RTK queries.](https://redux-toolkit.js.org/rtk-query/usage/error-handling)
----
-
-
 ## FAQ: How to use Vite instead of CRA?
 
 There are a few differences encountered while using Vite in place of CRA:
