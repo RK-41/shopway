@@ -19,7 +19,7 @@ Check it out: [ShopWay](https://shopway-aw74.onrender.com)
 - [Build & Deploy](#build--deploy)
   - [Seed Database](#seed-database)
   
-- [Sample User Logins](#sample-user-logins)
+- [Test User Logins](#test-user-logins)
   
 - [FAQ: How to use Vite instead of CRA?](#faq-how-to-use-vite-instead-of-cra)
   - [Setting up the proxy](#setting-up-the-proxy)
