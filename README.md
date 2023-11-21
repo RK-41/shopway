@@ -1,6 +1,6 @@
 # ShopWay
 
-> An eCommerce Platform built with the MERN stack and Redux.
+> An eCommerce Platform built with the MERN stack, Redux and Bootstrap.
 
 Check it out: [ShopWay](https://shopway-aw74.onrender.com)
 
