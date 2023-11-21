@@ -40,7 +40,6 @@
    Helmet Provider Impelementation
 */
 
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
@@ -67,7 +66,7 @@ import CartScreen from './screens/CartScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ShippingScreen from './screens/ShippingScreen';
-import PaymentScreen from './screens/PaymentScreen';
+import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import ProfileScreen from './screens/ProfileScreen';
@@ -94,7 +93,7 @@ const router = createBrowserRouter(
 
 			<Route path='' element={<PrivateRoute />}>
 				<Route path='/shipping' element={<ShippingScreen />} />
-				<Route path='/payment' element={<PaymentScreen />} />
+				<Route path='/paymentmethod' element={<PaymentMethodScreen />} />
 				<Route path='/placeorder' element={<PlaceOrderScreen />} />
 				<Route path='/order/:id' element={<OrderScreen />} />
 				<Route path='/profile' element={<ProfileScreen />} />

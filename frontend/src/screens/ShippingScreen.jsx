@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /*
   12.11.
 
@@ -31,7 +30,7 @@ const ShippingScreen = () => {
       ev.preventDefault();
 
       dispatch(saveShippingAddress({ address, city, postalCode, country }));
-      navigate('/payment');
+      navigate('/paymentmethod');
    };
 
    return (

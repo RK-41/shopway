@@ -153,12 +153,11 @@ const PlaceOrderScreen = () => {
                            Place Order
                         </Button>
                      </ListGroup.Item>
-
-                     {isLoading && <Loader />}
                   </ListGroup>
                </Card>
             </Col>
          </Row>
+         {isLoading && <Loader />}
       </>
    );
 };

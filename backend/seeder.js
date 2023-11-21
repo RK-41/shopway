@@ -3,6 +3,12 @@
 
   Script to Seed the Data (User Data and Product Data)
 
+   Import Data:
+      npm run data:import
+
+   Destroy Data:
+      npm run data:destroy
+
 */
 
 import mongoose from 'mongoose';
