@@ -123,7 +123,7 @@ npm run data:destroy
 ---
 
 
-## Sample User Logins
+## Test User Logins
 
 Here are some test user credentials:
 ```
