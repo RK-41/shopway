@@ -4,12 +4,11 @@
 
 Check it out: [ShopWay](https://shopway-aw74.onrender.com)
 
-It has a Working Shopping Cart with PayPal & Credit/Debit Payment Integration.
-
 
 <!-- toc -->
 ## Table of Contents
 
+- [App's Expertise](#apps-expertise)
 - [Features](#features)
   
 - [Usage](#usage)
@@ -31,6 +30,14 @@ It has a Working Shopping Cart with PayPal & Credit/Debit Payment Integration.
 ---
 
 <!-- tocstop -->
+
+## App's Expertise:
+- User-Centric Design:
+  - A seamless shopping experience with intuitive features like product search, a dynamic top products carousel, and a user-friendly shopping cart, enhancing user satisfaction and engagement.
+
+- Advanced Administrative Tools:
+  - Robust admin functionalities, including product and user management, order tracking, and delivery status updates, contributing to streamlined operations and efficient business processes.
+
 
 ## Features
 
